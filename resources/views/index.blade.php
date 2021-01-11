@@ -5,22 +5,6 @@
             <h1 class="jumbotron-heading">Player List</h1>
         </div>
     </section>
-    @if (isset($message))
-        <div class="py-1 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="alert alert-success" role="alert">
-                            Player successfully updated
-                        </div>
-                        <div class="alert alert-warning" id="warning" style="display: none" role="alert">
-                            Please enter value
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
 
     <div class="album py-5 bg-light">
         <div class="container">
@@ -37,6 +21,23 @@
             </div>
         </div>
     </div>
+
+    @if (isset($message))
+        <div class="py-1 bg-light" id="messages">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success" id="success" role="alert">
+                            Player successfully updated
+                        </div>
+                        <div class="alert alert-warning" id="warning" style="display: none" role="alert">
+                            Please enter value
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <div class="album py-5 bg-light" id="list">
         <div class="container">

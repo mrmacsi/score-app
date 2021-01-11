@@ -43,7 +43,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
-    function search(id){
+    function search(){
         var val = $("#score").val();
 
         $.get( "/score/get/"+val, function( data ) {
@@ -79,10 +79,22 @@
                 }
             });
         }else{
+            $("#messages").show();
             $("#warning").show();
-            setInterval(function(){ $("#warning").hide(); }, 3000);
+            setInterval(function(){
+                $("#warning").hide();
+                $("#messages").hide();
+            }, 3000);
         }
     }
+    $( document ).ready(function() {
+        setInterval(function(){
+            if ($("#messages").length > 0){
+                $("#success").hide();
+                $("#messages").hide();
+            }
+        }, 3000);
+    });
 </script>
 </body>
 </html>

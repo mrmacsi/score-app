@@ -43,26 +43,37 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
-    function get(id){
-        $("#info").show();
-        $("#newScore").hide();
-        $.get( "/score/get/"+id, function( data ) {
-            $("#playerName").text(data.Player);
-            $("#playerScore").text(data.Score);
+    function search(id){
+        var val = $("#score").val();
+
+        $.get( "/score/get/"+val, function( data ) {
+            $("#list").show();
+            $("#players").html('');
+            data.forEach(element => {
+                var text = '<div class="col-md-4" id="'+element.Player+'">'+
+                    '<div class="card mb-4 box-shadow">'+
+                    '<div class="card-body">'+
+                    '<p class="card-text">Player Name : '+element.Player+'</p>'+
+                    '<p class="card-text">Player Score : '+element.Score+'</p>'+
+                    '<input placeholder="New Score" class="form-control" style="width: 150px">'+
+                    '<button onclick="update(\''+element.Player+'\')" class="btn btn-sm btn-outline-secondary my-3">Edit Score</button>'+
+                    '</div></div></div>';
+                $("#players").append(text);
+            });
         });
     }
-    function update(){
-        var id = $("#playerScore").text();
-        var newScore = $("#newPlayerScore").val();
+    function update(playerName){
+        var newScore = $("#"+playerName).find("input").val();
+        console.log(newScore)
         $.ajax({
-            url: "/score/update/"+id,
+            url: "/score/update/"+playerName,
             type: 'PUT',
             data: {
                 'score': newScore,
                 "_token": "{{ csrf_token() }}"
             },
             success: function(data) {
-                console.log(data);
+                location.href = "{{ route('index', ['message'=>true]) }}";
             }
         });
     }

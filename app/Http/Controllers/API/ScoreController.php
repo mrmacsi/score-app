@@ -19,8 +19,8 @@ class ScoreController extends Controller
         $data        =   json_decode(file_get_contents(storage_path('data.json')), true);
         $player = [];
         foreach ($data as $item) {
-            if ($item['Score'] == $number) {
-                $player = $item;
+            if ($item['Score'] > $number) {
+                $player[] = $item;
             }
         }
         return $player;
@@ -32,13 +32,13 @@ class ScoreController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $number)
+    public function update(Request $request, $playerName)
     {
         $nemScore = $request->get('score');
         $data        =   json_decode(file_get_contents(storage_path('data.json')), true);
         $player = [];
         foreach ($data as $item) {
-            if ($item['Score'] == $number) {
+            if ($item['Player'] == $playerName) {
                 $item['Score'] = $nemScore;
             }
             $player[] = $item;

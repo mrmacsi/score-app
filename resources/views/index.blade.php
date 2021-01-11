@@ -6,20 +6,28 @@
         </div>
     </section>
     @if (isset($message))
-        <div class="alert alert-success" role="alert" style="display: none">
-            Player successfully updated
+        <div class="py-1 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success" role="alert">
+                            Player successfully updated
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     @endif
-    <div class="album py-5 bg-light" id="info" style="display: none">
+
+    <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
-                            <p class="card-text">Player Name : <span id="playerName"></span></p>
-                            <p class="card-text">Player Score : <span id="playerScore"></span></p>
-                            <input placeholder="New Score" class="form-control" id="newPlayerScore" style="width: 150px">
-                            <button onclick="update()" class="btn btn-sm btn-outline-secondary my-3">Edit Score</button>
+                            <p class="card-text">Show Scores above number : </p>
+                            <input placeholder="Search Score" class="form-control" id="score" style="width: 150px">
+                            <button onclick="search()" class="btn btn-sm btn-outline-secondary my-3">Show</button>
                         </div>
                     </div>
                 </div>
@@ -27,19 +35,9 @@
         </div>
     </div>
 
-    <div class="album py-5 bg-light">
+    <div class="album py-5 bg-light" id="list">
         <div class="container">
-            <div class="row">
-                @foreach($list as $item)
-                    <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                            <div class="card-body">
-                                <p class="card-text">{{$item['Player']}}</p>
-                                <button onclick="get({{$item['Score']}})" class="btn btn-sm btn-outline-secondary">Show</button>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+            <div class="row" id="players">
             </div>
         </div>
     </div>

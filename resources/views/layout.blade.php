@@ -80,6 +80,7 @@
             });
         }else{
             $("#warning").show();
+            setInterval(function(){ $("#warning").hide(); }, 3000);
         }
     }
 </script>

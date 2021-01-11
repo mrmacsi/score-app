@@ -22,8 +22,7 @@
         </div>
     </div>
 
-    @if (isset($message))
-        <div class="py-1 bg-light" id="messages">
+    <div class="py-1 bg-light" id="messages" style="display: none">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -37,7 +36,6 @@
                 </div>
             </div>
         </div>
-    @endif
 
     <div class="album py-5 bg-light" id="list">
         <div class="container">

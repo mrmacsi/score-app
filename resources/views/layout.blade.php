@@ -74,7 +74,13 @@
                 },
                 success: function(data) {
                     if (data.success){
-                        location.href = "{{ route('index', ['message'=>true]) }}";
+                        $("#success").show();
+                        $("#messages").show();
+                        search();
+                        setInterval(function(){
+                            $("#success").hide();
+                            $("#messages").hide();
+                        }, 3000);
                     }
                 }
             });
@@ -88,12 +94,6 @@
         }
     }
     $( document ).ready(function() {
-        setInterval(function(){
-            if ($("#messages").length > 0){
-                $("#success").hide();
-                $("#messages").hide();
-            }
-        }, 3000);
     });
 </script>
 </body>

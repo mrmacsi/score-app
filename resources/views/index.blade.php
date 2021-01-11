@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="alert alert-success" id="success" role="alert">
+                        <div class="alert alert-success" id="success" style="display: none" role="alert">
                             Player successfully updated
                         </div>
                         <div class="alert alert-warning" id="warning" style="display: none" role="alert">

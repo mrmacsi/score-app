@@ -16,6 +16,9 @@ class ScoreController extends Controller
      */
     public function get($number)
     {
+        if ($number == '') {
+            return ['success' => false];
+        }
         $data        =   json_decode(file_get_contents(storage_path('data.json')), true);
         $player = [];
         foreach ($data as $item) {
@@ -23,7 +26,7 @@ class ScoreController extends Controller
                 $player[] = $item;
             }
         }
-        return $player;
+        return ['success' => true, 'data' => $player];
     }
 
     /**

@@ -45,22 +45,32 @@
 <script>
     function search(){
         var val = $("#score").val();
-
-        $.get( "/score/get/"+val, function( data ) {
-            $("#list").show();
-            $("#players").html('');
-            data.forEach(element => {
-                var text = '<div class="col-md-4" id="'+element.Player+'">'+
-                    '<div class="card mb-4 box-shadow">'+
-                    '<div class="card-body">'+
-                    '<p class="card-text">Player Name : '+element.Player+'</p>'+
-                    '<p class="card-text">Player Score : '+element.Score+'</p>'+
-                    '<input placeholder="New Score" class="form-control" style="width: 150px">'+
-                    '<button onclick="update(\''+element.Player+'\')" class="btn btn-sm btn-outline-secondary my-3">Edit Score</button>'+
-                    '</div></div></div>';
-                $("#players").append(text);
+        if (val != ''){
+            $.get( "/score/get/"+val, function( response ) {
+                if(response.success){
+                    $("#list").show();
+                    $("#players").html('');
+                    response.data.forEach(element => {
+                        var text = '<div class="col-md-4" id="'+element.Player+'">'+
+                            '<div class="card mb-4 box-shadow">'+
+                            '<div class="card-body">'+
+                            '<p class="card-text">Player Name : '+element.Player+'</p>'+
+                            '<p class="card-text">Player Score : '+element.Score+'</p>'+
+                            '<input placeholder="New Score" class="form-control" style="width: 150px">'+
+                            '<button onclick="update(\''+element.Player+'\')" class="btn btn-sm btn-outline-secondary my-3">Edit Score</button>'+
+                            '</div></div></div>';
+                        $("#players").append(text);
+                    });
+                }
             });
-        });
+        }else{
+            $("#messages").show();
+            $("#warning").show();
+            setInterval(function(){
+                $("#warning").hide();
+                $("#messages").hide();
+            }, 3000);
+        }
     }
     function update(playerName){
         var newScore = $("#"+playerName).find("input").val();

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ScoreController;
+use App\Http\Controllers\AppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [AppController::class, 'index'])->name('index');
+Route::group(['prefix' => 'score'], function () {
+    Route::get('get/{id}', [ScoreController::class, 'get']);
+    Route::put('update/{id}', [ScoreController::class, 'update']);
 });

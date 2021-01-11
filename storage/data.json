@@ -1,1 +1,18 @@
-[{"Player":"Joe","Score":"4"},{"Player":"Jane","Score":1},{"Player":"Jonny","Score":"2"},{"Player":"Jeremy","Score":2}]
+[
+    {
+        "Player": "Joe",
+        "Score": 3
+    },
+    {
+        "Player": "Jane",
+        "Score": 1
+    },
+    {
+        "Player": "Jonny",
+        "Score": 5
+    },
+    {
+        "Player": "Jeremy",
+        "Score": 2
+    }
+]

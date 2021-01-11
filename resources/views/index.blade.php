@@ -28,7 +28,7 @@
                 <div class="col-md-12">
                     <div class="card mb-4 box-shadow">
                         <div class="card-body">
-                            <p class="card-text">Show Scores above number : </p>
+                            <p class="card-text">Show Scores above the score : </p>
                             <input placeholder="Search Score" class="form-control" id="score" style="width: 150px">
                             <button onclick="search()" class="btn btn-sm btn-outline-secondary my-3">Show</button>
                         </div>

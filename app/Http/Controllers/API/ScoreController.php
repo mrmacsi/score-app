@@ -43,6 +43,9 @@ class ScoreController extends Controller
             }
             $player[] = $item;
         }
-        return ['player' => $player];
+        $fp = fopen(storage_path('data.json'), 'w');
+        fwrite($fp, json_encode($player));
+        fclose($fp);
+        return ['success' => true];
     }
 }

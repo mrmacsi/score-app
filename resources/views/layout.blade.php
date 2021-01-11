@@ -73,7 +73,9 @@
                 "_token": "{{ csrf_token() }}"
             },
             success: function(data) {
-                location.href = "{{ route('index', ['message'=>true]) }}";
+                if (data.success){
+                    location.href = "{{ route('index', ['message'=>true]) }}";
+                }
             }
         });
     }

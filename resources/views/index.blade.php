@@ -13,6 +13,9 @@
                         <div class="alert alert-success" role="alert">
                             Player successfully updated
                         </div>
+                        <div class="alert alert-warning" id="warning" style="display: none" role="alert">
+                            Please enter value
+                        </div>
                     </div>
                 </div>
             </div>

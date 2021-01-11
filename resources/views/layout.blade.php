@@ -64,20 +64,23 @@
     }
     function update(playerName){
         var newScore = $("#"+playerName).find("input").val();
-        console.log(newScore)
-        $.ajax({
-            url: "/score/update/"+playerName,
-            type: 'PUT',
-            data: {
-                'score': newScore,
-                "_token": "{{ csrf_token() }}"
-            },
-            success: function(data) {
-                if (data.success){
-                    location.href = "{{ route('index', ['message'=>true]) }}";
+        if (newScore != ''){
+            $.ajax({
+                url: "/score/update/"+playerName,
+                type: 'PUT',
+                data: {
+                    'score': newScore,
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function(data) {
+                    if (data.success){
+                        location.href = "{{ route('index', ['message'=>true]) }}";
+                    }
                 }
-            }
-        });
+            });
+        }else{
+            $("#warning").show();
+        }
     }
 </script>
 </body>

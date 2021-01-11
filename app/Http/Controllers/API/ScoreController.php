@@ -35,6 +35,9 @@ class ScoreController extends Controller
     public function update(Request $request, $playerName)
     {
         $nemScore = $request->get('score');
+        if ($nemScore == '') {
+            return ['success' => false];
+        }
         $data        =   json_decode(file_get_contents(storage_path('data.json')), true);
         $player = [];
         foreach ($data as $item) {
